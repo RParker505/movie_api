@@ -6,7 +6,7 @@ const http = require('http'),
 // create the server
 http.createServer((request, response) => {
     let addr = request.url,
-        q = new URL(addr, 'http://' + request.headers.host),
+        q = url.parse(addr, true),
         filePath = '';
 
     // log the server request    
