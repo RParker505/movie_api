@@ -48,13 +48,15 @@ let topMovies = [
     }
   ];
 
+  // serve the “documentation.html” file from the public folder
+app.use(express.static('public'));
+
   // GET requests
   // return welcome message when request path is homepage
 app.get('/', (req, res) => {
     res.send('Welcome to Spooky Vibes!');
   });
-  
-  
+   
   // return list of top movies when request path is /movies
 app.get('/movies', (req, res) => {
     res.json(topMovies);
