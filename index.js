@@ -5,6 +5,14 @@ const express = require('express'); //import express to be used locally
     
 const app = express(); //use this variable to route HTTP requests and responses
 
+// create a write stream (in append mode)
+// a ‘log.txt’ file is created in root directory
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'})
+
+// setup the logger
+app.use(morgan('combined', {stream: accessLogStream}));
+
+
 let topMovies = [
     {
       title: 'Midsommar',
