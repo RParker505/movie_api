@@ -47,9 +47,16 @@ let topMovies = [
       director: 'Jordan Peele'
     }
   ];
+
+  // GET requests
+  // return welcome message when request path is homepage
+app.get('/', (req, res) => {
+    res.send('Welcome to Spooky Vibes!');
+  });
+  
   
   // return list of top movies when request path is /movies
-  app.get('/movies', (req, res) => {
+app.get('/movies', (req, res) => {
     res.json(topMovies);
   });
   
