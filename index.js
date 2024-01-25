@@ -15,7 +15,7 @@ let users = [
   {
     id: 2,
     name: 'Mark',
-    favoriteMovies: []
+    favoriteMovies: ["Alien"]
   }
 ]
 
