@@ -80,6 +80,21 @@ app.put('/users/:id', (req, res) => {
   }
 });
 
+// CREATE/POST to add a movie to user favorites
+app.post('/users/:id/:movieTitle', (req, res) => {
+  const { id, movieTitle } = req.params;
+  const favorites = req.body;
+
+  let user = users.find( user => user.id == id );//use let here because if the user does exist, we're going to update it with a new favoite movie. Use == instead of === because :id will be a string and user.id is a number.
+
+  if (user) {
+    user.favoriteMovies.push(movieTitle);
+    res.status(200).json(user);
+  } else {
+    res.status(400).send('No such user in the database!')
+  }
+});
+
 // READ/GET to return the full list of movies
 app.get('/movies', (req, res) => {
   res.status(200).json(movies)
