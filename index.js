@@ -95,6 +95,20 @@ app.post('/users/:id/:movieTitle', (req, res) => {
   }
 });
 
+// DELETE to remove movie from list of user favorites
+app.delete('/users/:id/:movieTitle', (req, res) => {
+  const { id, movieTitle } = req.params;
+
+  let user = users.find( user => user.id == id );//use let here because if the user does exist, we're going to update it by removing a favoite movie. Use == instead of === because :id will be a string and user.id is a number.
+
+  if (user) {
+    user.favoriteMovies = user.favoriteMovies.filter( title => title !== movieTitle );
+    res.status(200).send(`${movieTitle} has been removed from user ${id}'s array`);
+  } else {
+    res.status(400).send('No such user in the database!')
+  }
+})
+
 // READ/GET to return the full list of movies
 app.get('/movies', (req, res) => {
   res.status(200).json(movies)
