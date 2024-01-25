@@ -41,28 +41,12 @@ let movies = [
     }
 ]
 
-  // serve the “documentation.html” file from the public folder
-app.use(express.static('public'));
-
-  // GET requests
-  // return welcome message when request path is homepage
-app.get('/', (req, res) => {
-    res.send('Welcome to Spooky Vibes!');
-  });
-   
-  // return list of top movies when request path is /movies
 // READ/GET to return the full list of movies
 app.get('/movies', (req, res) => {
     res.status(200).json(movies)
 })
 
 
-  // error-handling middleware
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Something broke!');
-  });
-  
   // listen for requests
 app.listen(8080, () => {
     console.log('Your app is listening on port 8080.');
