@@ -65,6 +65,21 @@ app.post('/users', (req, res) => {
   }
 });
 
+// UPDATE/PUT to update a username
+app.put('/users/:id', (req, res) => {
+  const { id } = req.params;
+  const updatedUser = req.body;
+
+  let user = users.find( user => user.id == id );//use let here because if the user does exist, we're going to update it with a new username. Use == instead of === because :id will be a string and user.id is a number.
+
+  if (user) {
+    user.name = updatedUser.name;
+    res.status(200).json(user);
+  } else {
+    res.status(400).send('No such user in the database!')
+  }
+});
+
 // READ/GET to return the full list of movies
 app.get('/movies', (req, res) => {
   res.status(200).json(movies)
