@@ -43,7 +43,19 @@ let movies = [
 
 // READ/GET to return the full list of movies
 app.get('/movies', (req, res) => {
-    res.status(200).json(movies)
+  res.status(200).json(movies)
+})
+
+// READ/GET to return the details for movie by title
+app.get('/movies/:title', (req, res) => {
+  const { title } = req.params;
+  const movie = movies.find( movie => movie.Title === title );
+
+  if (movie) {
+    res.status(200).json(movie);
+  } else {
+    res.status(400).send('No such movie in the database!')
+  }
 })
 
 
