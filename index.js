@@ -70,6 +70,18 @@ app.get('/movies/genre/:genreName', (req, res) => {
   }
 })
 
+// READ/GET to return the details for movie director
+app.get('/movies/director/:directorName', (req, res) => {
+  const { directorName } = req.params;
+  const director = movies.find( movie => movie.Director.Name === directorName ).Director;//adding .Director at the end returns just the Director part of the movie object
+
+  if (director) {
+    res.status(200).json(director);
+  } else {
+    res.status(400).send('No such director in the database!')
+  }
+})
+
 
   // listen for requests
   app.listen(8080, () => {
