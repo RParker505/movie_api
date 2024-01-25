@@ -58,6 +58,18 @@ app.get('/movies/:title', (req, res) => {
   }
 })
 
+// READ/GET to return the details for movie genre
+app.get('/movies/genre/:genreName', (req, res) => {
+  const { genreName } = req.params;
+  const genre = movies.find( movie => movie.Genre.Name === genreName ).Genre;
+
+  if (genre) {
+    res.status(200).json(genre);
+  } else {
+    res.status(400).send('No such genre in the database!')
+  }
+})
+
 
   // listen for requests
   app.listen(8080, () => {
