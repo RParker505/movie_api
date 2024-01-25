@@ -52,6 +52,19 @@ let movies = [
     }
 ]
 
+// CREATE/POST to set up a new user
+app.post('/users', (req, res) => {
+  const newUser = req.body;
+
+  if (!newUser.name) {
+      res.status(400).send('New user must include a name.');
+  } else {
+      newUser.id = uuid.v4();
+      users.push(newUser);
+      res.status(201).json(newUser);
+  }
+});
+
 // READ/GET to return the full list of movies
 app.get('/movies', (req, res) => {
   res.status(200).json(movies)
