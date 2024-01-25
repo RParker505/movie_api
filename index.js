@@ -1,12 +1,10 @@
-const express = require('express'); //import express to be used locally
-    morgan = require('morgan');
-    fs = require('fs');
-    path = require('path');
-    
+const express = require('express');
+    bodyParser = require('body-parser');
+    uuid = require('uuid');
+
 const app = express(); //use this variable to route HTTP requests and responses
 
-// setup the logger
-app.use(morgan('common'));
+app.use(bodyParser.json());
 
 
 let topMovies = [
@@ -76,4 +74,4 @@ app.use((err, req, res, next) => {
 app.listen(8080, () => {
     console.log('Your app is listening on port 8080.');
   });
-  
+    });
