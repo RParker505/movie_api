@@ -6,7 +6,18 @@ const app = express(); //use this variable to route HTTP requests and responses
 
 app.use(bodyParser.json());
 
-let users = []
+let users = [
+  {
+    id: 1,
+    name: 'Kim',
+    favoriteMovies: []
+  },
+  {
+    id: 2,
+    name: 'Mark',
+    favoriteMovies: []
+  }
+]
 
 let movies = [
     {
