@@ -51,9 +51,11 @@ app.get('/', (req, res) => {
   });
    
   // return list of top movies when request path is /movies
+// READ/GET to return the full list of movies
 app.get('/movies', (req, res) => {
-    res.json(topMovies);
-  });
+    res.status(200).json(movies)
+})
+
 
   // error-handling middleware
 app.use((err, req, res, next) => {
