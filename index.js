@@ -52,6 +52,9 @@ let movies = [
     }
 ]
 
+// serve the “documentation.html” file from the public folder
+app.use(express.static('public'));
+
 // CREATE/POST to set up a new user
 app.post('/users', (req, res) => {
   const newUser = req.body;
