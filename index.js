@@ -52,7 +52,7 @@ let movies = [
     }
 ]
 
-// serve the “documentation.html” file from the public folder
+// serve the “documentation.html” and any other files from the public folder
 app.use(express.static('public'));
 
 // CREATE/POST to set up a new user
