@@ -92,7 +92,42 @@
             <li>Request Body: none</li>
             <li>Response Body: JSON object containing details for all movies in the database. Details include Title, Description, Director (name, bio, birth year), Genre (name, description), Image, and Featured (true or false).</li>
                 <ul>
-                    <li>Example:</li>
+                    <li>Example:<br>
+                        <code>
+                            [<br>
+                                {<br>
+                                    "Title": "Midsommar",<br>
+                                    "Description": "A couple travels to Northern Europe to visit a rural hometown's fabled Swedish mid-summer festival. What begins as an idyllic retreat quickly devolves into an increasingly violent and bizarre competition at the hands of a pagan cult.",<br>
+                                    "Director": {<br>
+                                        "Name": "Ari Aster",<br>
+                                        "Bio": "Ari Aster is an American filmmaker. He became best known for writing and directing Hereditary, Midsommar, and Beau Is Afraid, all of which were released by A24.",<br>
+                                        "Birth_year": 1986<br>
+                                    },<br>
+                                    "Genre": {<br>
+                                        "Name": "Folk horror",<br>
+                                        "Description": "Folk horror is a subgenre of horror film and horror fiction that uses elements of folklore to invoke fear and foreboding."<br>
+                                    },<br>
+                                    "Image": "https://m.media-amazon.com/images/M/MV5BMzQxNzQzOTQwM15BMl5BanBnXkFtZTgwMDQ2NTcwODM@._V1_.jpg",<br>
+                                    "Featured": false<br>
+                                },<br>
+                                {<br>
+                                    "Title": "IT",<br>
+                                    "Description": "In the summer of 1989, a group of bullied kids band together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town.",<br>
+                                    "Director": {<br>
+                                        "Name": "Andy Muschietti",<br>
+                                        "Bio": "Andy Muschietti was born on August 26, 1973, in Buenos Aires, Federal District, Argentina. He is a producer and director, known for Mama (2013), It (2017) and It Chapter Two (2019).",<br>
+                                        "Birth_year": 1973<br>
+                                    },<br>
+                                    "Genre": {<br>
+                                        "Name": "Supernatural horror",<br>
+                                        "Description": "Supernatural horror film is a film genre that combines aspects of supernatural film and horror film. Supernatural occurrences in such films often include ghosts and demons, and many supernatural horror films have elements of religion."<br>
+                                    },<br>
+                                    "Image": "https://upload.wikimedia.org/wikipedia/en/5/5a/It_%282017%29_poster.jpg",<br>
+                                    "Featured": false<br>
+                                }<br>
+                            ]
+                            </code>
+                    </li>
                 </ul>
         </ul>
         <h3 id="singleMovie">Return data about a single movie by title</h3>
@@ -134,7 +169,14 @@
             <li>Request Body: none</li>
             <li>Response Body: JSON object containing details for the genre, including the genre name and description.</li>
                 <ul>
-                    <li>Example:</li>
+                    <li>Example:<br>
+                        <code>
+                            {<br>
+                                "Name": "Folk horror",<br>
+                                "Description": "Folk horror is a subgenre of horror film and horror fiction that uses elements of folklore to invoke fear and foreboding."<br>
+                            }
+                        </code>
+                    </li>
                 </ul>
         </ul>
         <h3 id="director">Return data about a director by name</h3>
@@ -146,7 +188,15 @@
             <li>Request Body: none</li>
             <li>Response Body: JSON object containing details for the director, including their name, bio and birth year.</li>
                 <ul>
-                    <li>Example:</li>
+                    <li>Example:<br>
+                        <code>
+                            {<br>
+                                "Name": "Ari Aster",<br>
+                                "Bio": "Ari Aster is an American filmmaker. He became best known for writing and directing Hereditary, Midsommar, and Beau Is Afraid, all of which were released by A24.",<br>
+                                "Birth_year": 1986<br>
+                            }
+                        </code>
+                    </li>
                 </ul>
         </ul>
         <h3 id="newUser">Allow new users to register</h3>
@@ -157,11 +207,29 @@
             <li>Query Parameters: none</li>
             <li>Request Body: JSON object with user name (required) and favorite movies (not required)</li>
                 <ul>
-                    <li>Example:</li>
+                    <li>Example:<br>
+                        <code>
+                            {<br>
+                                "name": "Amy",<br>
+                                "favoriteMovies": ["Hereditary", "Silence of the Lambs"]<br>
+                            }
+                        </code>
+                    </li>
                 </ul>
             <li>Response Body: JSON object containing new user details, including the new ID.</li>
                 <ul>
-                    <li>Example:</li>
+                    <li>Example:<br>
+                        <code>
+                            {<br>
+                                "name": "Amy",<br>
+                                "favoriteMovies": [<br>
+                                    "Hereditary",<br>
+                                    "Silence of the Lambs"<br>
+                                ],<br>
+                                "id": "0e417221-9794-45e4-8183-5bb26734a2c5"<br>
+                            }
+                        </code>
+                    </li>
                 </ul>
         </ul>
         <h3 id="userUpdate">Allow users to update their user name</h3>
@@ -172,11 +240,26 @@
             <li>Query Parameters: :id</li>
             <li>Request Body: JSON object with the new user name</li>
                 <ul>
-                    <li>Example:</li>
+                    <li>Example:<br>
+                        <code>
+                            {<br>
+                                "name": "Kim Updated Name",<br>
+                                "favoriteMovies": []<br>
+                            }
+                        </code>
+                    </li>
                 </ul>
             <li>Response Body: JSON object containing user details, including the new user name.</li>
                 <ul>
-                    <li>Example:</li>
+                    <li>Example:<br>
+                        <code>
+                            {<br>
+                                "id": 1,<br>
+                                "name": "Kim Updated Name",<br>
+                                "favoriteMovies": []<br>
+                            }
+                        </code>
+                    </li>
                 </ul>
         </ul>
         <h3 id="movieFavorite">Allow users to add a movie to their list of favorites</h3>
@@ -188,7 +271,11 @@
             <li>Request Body: none</li>
             <li>Response Body: Text message confirming the movie has been added to favorites.</li>
                 <ul>
-                    <li>Example:</li>
+                    <li>Example:<br>
+                        <code>
+                            "Us has been added to user [id]'s array."
+                        </code>
+                    </li>
                 </ul>
         </ul>
         <h3 id="movieUnfavorite">Allow users to remove a movie from their list of favorites</h3>
@@ -200,7 +287,11 @@
             <li>Request Body: none</li>
             <li>Response Body: Text message confirming the movie has been removed from favorites.</li>
                 <ul>
-                    <li>Example:</li>
+                    <li>Example:<br>
+                        <code>
+                            "Alien has been removed from user [id]'s array."
+                        </code>
+                    </li>
                 </ul>
         </ul>
         <h3 id="deleteUser">Allow users to deregister</h3>
@@ -212,7 +303,11 @@
             <li>Request Body: none</li>
             <li>Response Body: Text message confirming the user has been deleted.</li>
                 <ul>
-                    <li>Example:</li>
+                    <li>Example:<br>
+                        <code>
+                            "User [id] has been deleted."
+                        </code>
+                    </li>
                 </ul>
         </ul>
     </body>
