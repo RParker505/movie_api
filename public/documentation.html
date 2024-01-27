@@ -21,55 +21,55 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Return a list of all movies</td>
+                    <td><a href="#allMovies">Return a list of all movies</a></td>
                     <td>GET</td>
                     <td>/movies</td>
                     <td>JSON object with details for all movies: Title, Description, Director, Genre, Image, Featured</td>
                 </tr>
                 <tr>
-                    <td>Return data about a single movie by title</td>
+                    <td><a href="#singleMovie">Return data about a single movie by title</a></td>
                     <td>GET</td>
                     <td>/movies/:title</td>
                     <td>JSON object with single movie details: Title, Description, Director, Genre, Image, Featured</td>
                 </tr>
                 <tr>
-                    <td>Return data about a genre by name</td>
+                    <td><a href="#genre">Return data about a genre by name</a></td>
                     <td>GET</td>
                     <td>/movies/genre/:genreName</td>
                     <td>JSON object with genre name and description</td>
                 </tr>
                 <tr>
-                    <td>Return data about a director by name</td>
+                    <td><a href="#director">Return data about a director by name</a></td>
                     <td>GET</td>
                     <td>/movies/director/:directorName</td>
                     <td>JSON object with director details: Name, Bio, Birth Year</td>
                 </tr>
                 <tr>
-                    <td>Allow new users to register</td>
+                    <td><a href="#newUser">Allow new users to register</a></td>
                     <td>POST</td>
                     <td>/users</td>
                     <td>JSON object with user details: Name, favoriteMovies, id</td>
                 </tr>
                 <tr>
-                    <td>Allow users to update user info</td>
+                    <td><a href="#userUpdate">Allow users to update user name</a></td>
                     <td>PUT</td>
                     <td>/users/:id</td>
                     <td>JSON object with user details: Name, favoriteMovies, id</td>
                 </tr>
                 <tr>
-                    <td>Allow users to add movie to their list of favorites</td>
+                    <td><a href="#movieFavorite">Allow users to add movie to their list of favorites</a></td>
                     <td>POST</td>
                     <td>/users/:id/:movieTitle</td>
                     <td>Text message confirming the movie has been added to favorites</td>
                 </tr>
                 <tr>
-                    <td>Allow users to add movie to their list of favorites</td>
+                    <td><a href="#movieUnfavorite">Allow users to remove movie to their list of favorites</a></td>
                     <td>DELETE</td>
                     <td>/users/:id/:movieTitle</td>
                     <td>Text message confirming the movie has been removed from favorites</td>
                 </tr>
                 <tr>
-                    <td>Allow existing users to deregister</td>
+                    <td><a href="#deleteUser">Allow existing users to deregister</a></td>
                     <td>DELETE</td>
                     <td>/users/:id</td>
                     <td>Text message confirming the user has been deleted</td>
@@ -77,7 +77,7 @@
             </tbody>
         </table>
         <h2>Endpoints Explained</h2>
-        <h3>Return a list of all movies</h3>
+        <h3 id="allMovies">Return a list of all movies</h3>
         <ul>
             <li>Description: This endpoint returns a list of all movies in the database, complete with a Title, Description, Director, Genre, Image and Featured.</li>
             <li>URL: /movies</li>
@@ -89,7 +89,7 @@
                     <li>Example:</li>
                 </ul>
         </ul>
-        <h3>Return data about a single movie by title</h3>
+        <h3 id="singleMovie">Return data about a single movie by title</h3>
         <ul>
             <li>Description: This endpoint returns the details for a single movie in the database, complete with the Title, Description, Director, Genre, Image and Featured.</li>
             <li>URL: /movies/:title</li>
@@ -101,7 +101,7 @@
                     <li>Example:</li>
                 </ul>
         </ul>
-        <h3>Return data about a genre by name</h3>
+        <h3 id="genre">Return data about a genre by name</h3>
         <ul>
             <li>Description: This endpoint returns the details for a movie genre in the database, complete with the name and description.</li>
             <li>URL: /movies/genre/:genreName</li>
@@ -113,7 +113,7 @@
                     <li>Example:</li>
                 </ul>
         </ul>
-        <h3>Return data about a director by name</h3>
+        <h3 id="director">Return data about a director by name</h3>
         <ul>
             <li>Description: This endpoint returns the details for a movie director in the database, complete with their name, bio and birth year.</li>
             <li>URL: /movies/director/:directorName</li>
@@ -125,7 +125,7 @@
                     <li>Example:</li>
                 </ul>
         </ul>
-        <h3>Allow new users to register</h3>
+        <h3 id="newUser">Allow new users to register</h3>
         <ul>
             <li>Description: This endpoint allows new users to register with their name and favorite movies. An ID will be generated using uuid.</li>
             <li>URL: /users</li>
@@ -140,7 +140,7 @@
                     <li>Example:</li>
                 </ul>
         </ul>
-        <h3>Allow users to update their user name</h3>
+        <h3 id="userUpdate">Allow users to update their user name</h3>
         <ul>
             <li>Description: This endpoint allows users to update their user name.</li>
             <li>URL: /users/:id</li>
@@ -155,7 +155,7 @@
                     <li>Example:</li>
                 </ul>
         </ul>
-        <h3>Allow users to add a movie to their list of favorites</h3>
+        <h3 id="movieFavorite">Allow users to add a movie to their list of favorites</h3>
         <ul>
             <li>Description: This endpoint allow users to add a single movie to their list of favorites.</li>
             <li>URL: /users/:id/:movieTitle</li>
@@ -167,7 +167,7 @@
                     <li>Example:</li>
                 </ul>
         </ul>
-        <h3>Allow users to remove a movie from their list of favorites</h3>
+        <h3 id="movieUnfavorite">Allow users to remove a movie from their list of favorites</h3>
         <ul>
             <li>Description: This endpoint allow users to remove a single movie from their list of favorites.</li>
             <li>URL: /users/:id/:movieTitle</li>
@@ -179,7 +179,7 @@
                     <li>Example:</li>
                 </ul>
         </ul>
-        <h3>Allow users to deregister</h3>
+        <h3 id="deleteUser">Allow users to deregister</h3>
         <ul>
             <li>Description: This endpoint users to be removed from the database.</li>
             <li>URL: /users/:id</li>
