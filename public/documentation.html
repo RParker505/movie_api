@@ -104,7 +104,25 @@
             <li>Request Body: none</li>
             <li>Response Body: JSON object containing details for the movie. Details include Title, Description, Director (name, bio, birth year), Genre (name, description), Image, and Featured (true or false).</li>
                 <ul>
-                    <li>Example:</li>
+                    <li>Example:<br>
+                        <code>
+                            {<br>
+                                "Title": "IT",<br>
+                                "Description": "In the summer of 1989, a group of bullied kids band together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town.",<br>
+                                "Director": {<br>
+                                    "Name": "Andy Muschietti",<br>
+                                    "Bio": "Andy Muschietti was born on August 26, 1973, in Buenos Aires, Federal District, Argentina. He is a producer and director, known for Mama (2013), It (2017) and It Chapter Two (2019).",<br>
+                                    "Birth_year": 1973<br>
+                                },<br>
+                                "Genre": {<br>
+                                    "Name": "Supernatural horror",<br>
+                                    "Description": "Supernatural horror film is a film genre that combines aspects of supernatural film and horror film. Supernatural occurrences in such films often include ghosts and demons, and many supernatural horror films have elements of religion."<br>
+                                },<br>
+                                "Image": "https://upload.wikimedia.org/wikipedia/en/5/5a/It_%282017%29_poster.jpg",<br>
+                                "Featured": false<br>
+                            }
+                        </code>
+                    </li>
                 </ul>
         </ul>
         <h3 id="genre">Return data about a genre by name</h3>
