@@ -77,5 +77,119 @@
             </tbody>
         </table>
         <h2>Endpoints Explained</h2>
+        <h3>Return a list of all movies</h3>
+        <ul>
+            <li>Description: This endpoint returns a list of all movies in the database, complete with a Title, Description, Director, Genre, Image and Featured.</li>
+            <li>URL: /movies</li>
+            <li>Method: GET</li>
+            <li>Query Parameters: none</li>
+            <li>Request Body: none</li>
+            <li>Response Body: JSON object containing details for all movies in the database. Details include Title, Description, Director (name, bio, birth year), Genre (name, description), Image, and Featured (true or false).</li>
+                <ul>
+                    <li>Example:</li>
+                </ul>
+        </ul>
+        <h3>Return data about a single movie by title</h3>
+        <ul>
+            <li>Description: This endpoint returns the details for a single movie in the database, complete with the Title, Description, Director, Genre, Image and Featured.</li>
+            <li>URL: /movies/:title</li>
+            <li>Method: GET</li>
+            <li>Query Parameters: :title</li>
+            <li>Request Body: none</li>
+            <li>Response Body: JSON object containing details for the movie. Details include Title, Description, Director (name, bio, birth year), Genre (name, description), Image, and Featured (true or false).</li>
+                <ul>
+                    <li>Example:</li>
+                </ul>
+        </ul>
+        <h3>Return data about a genre by name</h3>
+        <ul>
+            <li>Description: This endpoint returns the details for a movie genre in the database, complete with the name and description.</li>
+            <li>URL: /movies/genre/:genreName</li>
+            <li>Method: GET</li>
+            <li>Query Parameters: :genreName</li>
+            <li>Request Body: none</li>
+            <li>Response Body: JSON object containing details for the genre, including the genre name and description.</li>
+                <ul>
+                    <li>Example:</li>
+                </ul>
+        </ul>
+        <h3>Return data about a director by name</h3>
+        <ul>
+            <li>Description: This endpoint returns the details for a movie director in the database, complete with their name, bio and birth year.</li>
+            <li>URL: /movies/director/:directorName</li>
+            <li>Method: GET</li>
+            <li>Query Parameters: :directorName</li>
+            <li>Request Body: none</li>
+            <li>Response Body: JSON object containing details for the director, including their name, bio and birth year.</li>
+                <ul>
+                    <li>Example:</li>
+                </ul>
+        </ul>
+        <h3>Allow new users to register</h3>
+        <ul>
+            <li>Description: This endpoint allows new users to register with their name and favorite movies. An ID will be generated using uuid.</li>
+            <li>URL: /users</li>
+            <li>Method: POST</li>
+            <li>Query Parameters: none</li>
+            <li>Request Body: JSON object with user name (required) and favorite movies (not required)</li>
+                <ul>
+                    <li>Example:</li>
+                </ul>
+            <li>Response Body: JSON object containing new user details, including the new ID.</li>
+                <ul>
+                    <li>Example:</li>
+                </ul>
+        </ul>
+        <h3>Allow users to update their user name</h3>
+        <ul>
+            <li>Description: This endpoint allows users to update their user name.</li>
+            <li>URL: /users/:id</li>
+            <li>Method: PUT</li>
+            <li>Query Parameters: :id</li>
+            <li>Request Body: JSON object with the new user name</li>
+                <ul>
+                    <li>Example:</li>
+                </ul>
+            <li>Response Body: JSON object containing user details, including the new user name.</li>
+                <ul>
+                    <li>Example:</li>
+                </ul>
+        </ul>
+        <h3>Allow users to add a movie to their list of favorites</h3>
+        <ul>
+            <li>Description: This endpoint allow users to add a single movie to their list of favorites.</li>
+            <li>URL: /users/:id/:movieTitle</li>
+            <li>Method: POST</li>
+            <li>Query Parameters: :id, :movieTitle</li>
+            <li>Request Body: none</li>
+            <li>Response Body: Text message confirming the movie has been added to favorites.</li>
+                <ul>
+                    <li>Example:</li>
+                </ul>
+        </ul>
+        <h3>Allow users to remove a movie from their list of favorites</h3>
+        <ul>
+            <li>Description: This endpoint allow users to remove a single movie from their list of favorites.</li>
+            <li>URL: /users/:id/:movieTitle</li>
+            <li>Method: DELETE</li>
+            <li>Query Parameters: :id, :movieTitle</li>
+            <li>Request Body: none</li>
+            <li>Response Body: Text message confirming the movie has been removed from favorites.</li>
+                <ul>
+                    <li>Example:</li>
+                </ul>
+        </ul>
+        <h3>Allow users to deregister</h3>
+        <ul>
+            <li>Description: This endpoint users to be removed from the database.</li>
+            <li>URL: /users/:id</li>
+            <li>Method: DELETE</li>
+            <li>Query Parameters: :id</li>
+            <li>Request Body: none</li>
+            <li>Response Body: Text message confirming the user has been deleted.</li>
+                <ul>
+                    <li>Example:</li>
+                </ul>
+        </ul>
     </body>
 </html>
