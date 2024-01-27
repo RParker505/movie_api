@@ -13,6 +13,7 @@
             <thead>
                 <tr>
                     <th>Request</th>
+                    <th>Method</th>
                     <th>URL/Endpoint</th>
                     <th>Response</th>
                 </tr>
@@ -20,46 +21,55 @@
             <tbody>
                 <tr>
                     <td>Return a list of all movies</td>
+                    <td>GET</td>
                     <td>/movies</td>
                     <td>JSON object with details for all movies: Title, Description, Director, Genre, Image, Featured</td>
                 </tr>
                 <tr>
                     <td>Return data about a single movie by title</td>
+                    <td>GET</td>
                     <td>/movies/:title</td>
                     <td>JSON object with single movie details: Title, Description, Director, Genre, Image, Featured</td>
                 </tr>
                 <tr>
                     <td>Return data about a genre by name</td>
+                    <td>GET</td>
                     <td>/movies/genre/:genreName</td>
                     <td>JSON object with genre name and description</td>
                 </tr>
                 <tr>
                     <td>Return data about a director by name</td>
+                    <td>GET</td>
                     <td>/movies/director/:directorName</td>
                     <td>JSON object with director details: Name, Bio, Birth Year</td>
                 </tr>
                 <tr>
                     <td>Allow new users to register</td>
+                    <td>POST</td>
                     <td>/users</td>
                     <td>JSON object with user details: Name, favoriteMovies, id</td>
                 </tr>
                 <tr>
                     <td>Allow users to update user info</td>
+                    <td>PUT</td>
                     <td>/users/:id</td>
                     <td>JSON object with user details: Name, favoriteMovies, id</td>
                 </tr>
                 <tr>
                     <td>Allow users to add movie to their list of favorites</td>
+                    <td>POST</td>
                     <td>/users/:id/:movieTitle</td>
                     <td>Text message confirming the movie has been added to favorites</td>
                 </tr>
                 <tr>
                     <td>Allow users to add movie to their list of favorites</td>
+                    <td>DELETE</td>
                     <td>/users/:id/:movieTitle</td>
                     <td>Text message confirming the movie has been removed from favorites</td>
                 </tr>
                 <tr>
                     <td>Allow existing users to deregister</td>
+                    <td>DELETE</td>
                     <td>/users/:id</td>
                     <td>Text message confirming the user has been deleted</td>
                 </tr>
