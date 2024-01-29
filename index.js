@@ -137,7 +137,7 @@ app.get('/movies', (req, res) => {
 // READ/GET to return the details for movie by title
 app.get('/movies/:title', (req, res) => {
   const { title } = req.params;
-  const movie = movies.find( movie => movie.Title === title );
+  const movie = movies.find( movie => movie.title === title );
 
   if (movie) {
     res.status(200).json(movie);
@@ -149,7 +149,7 @@ app.get('/movies/:title', (req, res) => {
 // READ/GET to return the details for movie genre
 app.get('/movies/genre/:genreName', (req, res) => {
   const { genreName } = req.params;
-  const genre = movies.find( movie => movie.Genre.Name === genreName ).Genre;//adding .Genre at the end returns just the Genre part of the movie object
+  const genre = movies.find( movie => movie.genre.name === genreName ).genre;//adding .Genre at the end returns just the Genre part of the movie object
 
   if (genre) {
     res.status(200).json(genre);
@@ -161,7 +161,7 @@ app.get('/movies/genre/:genreName', (req, res) => {
 // READ/GET to return the details for movie director
 app.get('/movies/director/:directorName', (req, res) => {
   const { directorName } = req.params;
-  const director = movies.find( movie => movie.Director.Name === directorName ).Director;//adding .Director at the end returns just the Director part of the movie object
+  const director = movies.find( movie => movie.director.name === directorName ).director;//adding .Director at the end returns just the Director part of the movie object
 
   if (director) {
     res.status(200).json(director);
