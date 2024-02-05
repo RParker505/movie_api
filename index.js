@@ -78,7 +78,7 @@ app.post('/users', async (req, res) => {
   await Users.findOne({Username: req.body.Username})//Query Users model to check if username from client already exists. If so, alert them.
   .then((user) => {
     if (user) {
-      return res.status(400).send(req.body.Username + 'already exists');
+      return res.status(400).send(req.body.Username + ' already exists');
     } else {
       Users
         .create({//if user does not exist, use Mongoose .create command to set up new user matching schema from models.js file
