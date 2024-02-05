@@ -8,6 +8,8 @@ const app = express(); //use this variable to route HTTP requests and responses
 const Movies = Models.Movie;
 const Users = Models.User;
 
+mongoose.connect('mongodb://localhost:27017/svDB', { useNewUrlParser: true, useUnifiedTopology: true });
+
 app.use(bodyParser.json());
 
 let users = [
