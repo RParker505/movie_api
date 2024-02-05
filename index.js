@@ -1,16 +1,16 @@
 const express = require('express');
-    bodyParser = require('body-parser');
     uuid = require('uuid');
     mongoose = require('mongoose');
     Models = require('./models.js');
 
 const app = express(); //use this variable to route HTTP requests and responses
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 const Movies = Models.Movie;
 const Users = Models.User;
 
 mongoose.connect('mongodb://localhost:27017/svDB', { useNewUrlParser: true, useUnifiedTopology: true });
-
-app.use(bodyParser.json());
 
 let users = [
   {
