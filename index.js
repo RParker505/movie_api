@@ -1,8 +1,12 @@
 const express = require('express');
     bodyParser = require('body-parser');
     uuid = require('uuid');
+    mongoose = require('mongoose');
+    Models = require('./models.js');
 
 const app = express(); //use this variable to route HTTP requests and responses
+const Movies = Models.Movie;
+const Users = Models.User;
 
 app.use(bodyParser.json());
 
