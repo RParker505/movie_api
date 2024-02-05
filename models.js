@@ -7,7 +7,11 @@ let movieSchema = mongoose.Schema({
         Name: String,
         Bio: String
     },
-    Actors: [String],
+    Director: {
+        Name: String,
+        Bio: String,
+        Birth: String,
+    },
     ImagePath: String,
     Featured: Bollean
 });
