@@ -185,6 +185,18 @@ app.get('/movies', async (req, res) => {
     });
 });
 
+// READ/GET to return the details for single movie by title
+app.get('/movies/:movieTitle', async (req, res) => {
+  await Movies.findOne({"Title": req.params.movieTitle})
+    .then((movie) => {
+      res.json(movie);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
+
 // READ/GET to return the details for movie genre
 app.get('/movies/genre/:genreName', async (req, res) => {
   await Movies.findOne({"Genre.Name": req.params.genreName})
