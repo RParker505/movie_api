@@ -157,18 +157,20 @@ app.delete('/users/:id/:movieTitle', (req, res) => {
 })
 
 // DELETE to let user deregister
-app.delete('/users/:id', (req, res) => {
-  const { id } = req.params;
-
-  let user = users.find( user => user.id == id );//use let here because if the user does exist, we're going to update it by removing the user. Use == instead of === because :id will be a string and user.id is a number.
-
-  if (user) {
-    users = users.filter( user => user.id != id );//use != because we're comparing string to a number
-    res.status(200).send(`User ${id} has been deleted.`);
-  } else {
-    res.status(400).send('No such user in the database!')
-  }
-})
+app.delete('/users/:Username', async (req, res) => {
+  await Users.findOneAndRemove({Username: req.params.Username})
+    .then((user) => {
+      if (!user) {
+        res.status(400).send(req.params.Username + ' was not found');
+      } else {
+        res.status(200).send(req.params.Username + ' was deleted.');
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
 
 // READ/GET to return the full list of movies
 app.get('/movies', async (req, res) => {
