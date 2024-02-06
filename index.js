@@ -170,16 +170,16 @@ app.get('/movies', async (req, res) => {
 });
 
 // READ/GET to return the details for movie genre
-app.get('/movies/genre/:genreName', (req, res) => {
-  const { genreName } = req.params;
-  const genre = movies.find( movie => movie.genre.name === genreName ).genre;//adding .Genre at the end returns just the Genre part of the movie object
-
-  if (genre) {
-    res.status(200).json(genre);
-  } else {
-    res.status(400).send('No such genre in the database!')
-  }
-})
+app.get('/movies/genre/:genreName', async (req, res) => {
+  await Movies.findOne({"Genre.Name": req.params.genreName})
+    .then((genre) => {
+      res.json(genre.Genre);//adding .Genre at the end returns just the Genre part of the movie object
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
 
 // READ/GET to return the details for movie director
 app.get('/movies/director/:directorName', (req, res) => {
