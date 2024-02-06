@@ -172,7 +172,7 @@ app.get('/movies', async (req, res) => {
 // READ/GET to return the details for movie genre
 app.get('/movies/genre/:genreName', async (req, res) => {
   await Movies.findOne({"Genre.Name": req.params.genreName})
-    .then((genre) => {
+    .then((genre) => {//genre here refers to the document that was just read
       res.json(genre.Genre);//adding .Genre at the end returns just the Genre part of the movie object
     })
     .catch((err) => {
@@ -184,7 +184,7 @@ app.get('/movies/genre/:genreName', async (req, res) => {
 // READ/GET to return the details for movie director
 app.get('/movies/director/:directorName', async (req, res) => {
   await Movies.findOne({"Director.Name": req.params.directorName})
-  .then((director) => {
+  .then((director) => {//director here refers to the document that was just read
     res.json(director.Director);//adding .Director at the end returns just the Director part of the movie object
   })
   .catch((err) => {
