@@ -158,21 +158,16 @@ app.delete('/users/:id', (req, res) => {
 })
 
 // READ/GET to return the full list of movies
-app.get('/movies', (req, res) => {
-  res.status(200).json(movies)
-})
-
-// READ/GET to return the details for movie by title
-app.get('/movies/:title', (req, res) => {
-  const { title } = req.params;
-  const movie = movies.find( movie => movie.title === title );
-
-  if (movie) {
-    res.status(200).json(movie);
-  } else {
-    res.status(400).send('No such movie in the database!')
-  }
-})
+app.get('/movies', async (req, res) => {
+  await Movies.find()
+    .then((movies) => {
+      res.status(201).json(movies);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
 
 // READ/GET to return the details for movie genre
 app.get('/movies/genre/:genreName', (req, res) => {
