@@ -35,7 +35,7 @@
                 <tr>
                     <td><a href="#singleMovie">Return data about a single movie by title</a></td>
                     <td>GET</td>
-                    <td>/movies/:title</td>
+                    <td>/movies/:movieTitle</td>
                     <td>JSON object with single movie details: Title, Description, Director, Genre, Image, Featured</td>
                 </tr>
                 <tr>
@@ -54,30 +54,30 @@
                     <td><a href="#newUser">Allow new users to register</a></td>
                     <td>POST</td>
                     <td>/users</td>
-                    <td>JSON object with user details: Name, favoriteMovies, id</td>
+                    <td>JSON object with user details: Username, Password, Email, Birthday, FavoriteMovies, id</td>
                 </tr>
                 <tr>
-                    <td><a href="#userUpdate">Allow users to update username</a></td>
+                    <td><a href="#userUpdate">Allow users to update their details</a></td>
                     <td>PUT</td>
-                    <td>/users/:id</td>
-                    <td>JSON object with user details: Username, password, email, birthday, FavoriteMovies, and id</td>
+                    <td>/users/:Username</td>
+                    <td>JSON object with user details: Username, Password, Email, Birthday, FavoriteMovies, id</td>
                 </tr>
                 <tr>
                     <td><a href="#movieFavorite">Allow users to add movie to their list of favorites</a></td>
                     <td>POST</td>
-                    <td>/users/:id/:movieTitle</td>
+                    <td>/users/:Username/movies/:MovieID</td>
                     <td>Text message confirming the movie has been added to favorites</td>
                 </tr>
                 <tr>
                     <td><a href="#movieUnfavorite">Allow users to remove movie to their list of favorites</a></td>
                     <td>DELETE</td>
-                    <td>/users/:id/:movieTitle</td>
+                    <td>/users/:Username/movies/:MovieID</td>
                     <td>Text message confirming the movie has been removed from favorites</td>
                 </tr>
                 <tr>
                     <td><a href="#deleteUser">Allow existing users to deregister</a></td>
                     <td>DELETE</td>
-                    <td>/users/:id</td>
+                    <td>/users/:Username</td>
                     <td>Text message confirming the user has been deleted</td>
                 </tr>
             </tbody>
@@ -90,13 +90,13 @@
             <li>Method: GET</li>
             <li>Query Parameters: none</li>
             <li>Request Body: none</li>
-            <li>Response Body: JSON object containing details for all movies in the database. Details include Title, Description, Director (name, bio, birth year), Genre (name, description), Image, and Featured (true or false).</li>
+            <li>Response Body: JSON object containing details for all movies in the database. Details include Title, Description, Director (name, bio, birthday), Genre (name, description), Image, and Featured (true or false).</li>
                 <ul>
                     <li>Example:<br>
                         <code>
                             [<br>
                                 {<br>
-                                    "_id": "ObjectId('65bb9abb1efdf65cd02744f3')",<br>
+                                    "_id": "65bb9abb1efdf65cd02744f3",<br>
                                     "Title": "Midsommar",<br>
                                     "Description": "A couple travels to Northern Europe to visit a rural hometown's fabled Swedish mid-summer festival. What begins as an idyllic retreat quickly devolves into an increasingly violent and bizarre competition at the hands of a pagan cult.",<br>
                                     "Genre": {<br>
@@ -106,13 +106,13 @@
                                     "Director": {<br>
                                         "Name": "Ari Aster",<br>
                                         "Bio": "Ari Aster is an American filmmaker. He became best known for writing and directing Hereditary, Midsommar, and Beau Is Afraid, all of which were released by A24.",<br>
-                                        "Birth": 1986<br>
+                                        "Birth": "1986-01-01T00:00:00.000Z"<br>
                                     },<br>
                                     "ImagePath": "https://m.media-amazon.com/images/M/MV5BMzQxNzQzOTQwM15BMl5BanBnXkFtZTgwMDQ2NTcwODM@._V1_.jpg",<br>
                                     "Featured": false<br>
                                 },<br>
                                 {<br>
-                                    "_id": "ObjectId('65bd815b1532675fdd12af2c')",<br>
+                                    "_id": "65bd815b1532675fdd12af2c",<br>
                                     "Title": "IT",<br>
                                     "Description": "In the summer of 1989, a group of bullied kids band together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town.",<br>
                                     "Genre": {<br>
@@ -122,7 +122,7 @@
                                     "Director": {<br>
                                         "Name": "Andy Muschietti",<br>
                                         "Bio": "Andy Muschietti was born on August 26, 1973, in Buenos Aires, Federal District, Argentina. He is a producer and director, known for Mama (2013), It (2017) and It Chapter Two (2019).",<br>
-                                        "Birth": 1973<br>
+                                        "Birth": "1986-01-01T00:00:00.000Z"<br>
                                     },<br>
                                     "ImagePath": "https://upload.wikimedia.org/wikipedia/en/5/5a/It_%282017%29_poster.jpg",<br>
                                     "Featured": false<br>
@@ -136,16 +136,16 @@
         <h3 id="singleMovie">Return data about a single movie by title</h3>
         <ul>
             <li>Description: This endpoint returns the details for a single movie in the database, complete with the Title, Description, Director, Genre, Image and Featured.</li>
-            <li>URL: /movies/:title</li>
+            <li>URL: /movies/:movieTitle</li>
             <li>Method: GET</li>
-            <li>Query Parameters: :title</li>
+            <li>Query Parameters: :movieTitle</li>
             <li>Request Body: none</li>
             <li>Response Body: JSON object containing details for the movie. Details include Title, Description, Director (name, bio, birth year), Genre (name, description), Image, and Featured (true or false).</li>
                 <ul>
                     <li>Example:<br>
                         <code>
                             {<br>
-                                "_id": "ObjectId('65bd815b1532675fdd12af2c')",<br>
+                                "_id": "65bd815b1532675fdd12af2c",<br>
                                 "Title": "IT",<br>
                                 "Description": "In the summer of 1989, a group of bullied kids band together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town.",<br>
                                 "Genre": {<br>
@@ -155,7 +155,7 @@
                                 "Director": {<br>
                                     "Name": "Andy Muschietti",<br>
                                     "Bio": "Andy Muschietti was born on August 26, 1973, in Buenos Aires, Federal District, Argentina. He is a producer and director, known for Mama (2013), It (2017) and It Chapter Two (2019).",<br>
-                                    "Birth": 1973<br>
+                                    "Birth": "1986-01-01T00:00:00.000Z"<br>
                                 },<br>
                                 "ImagePath": "https://upload.wikimedia.org/wikipedia/en/5/5a/It_%282017%29_poster.jpg",<br>
                                 "Featured": false<br>
@@ -199,7 +199,7 @@
                             {<br>
                                 "Name": "Ari Aster",<br>
                                 "Bio": "Ari Aster is an American filmmaker. He became best known for writing and directing Hereditary, Midsommar, and Beau Is Afraid, all of which were released by A24.",<br>
-                                "Birth": 1986<br>
+                                "Birth": "1986-01-01T00:00:00.000Z"<br>
                             }
                         </code>
                     </li>
@@ -212,7 +212,7 @@
             <li>URL: /users</li>
             <li>Method: POST</li>
             <li>Query Parameters: none</li>
-            <li>Request Body: JSON object with user name (required) and favorite movies (not required)</li>
+            <li>Request Body: JSON object with username (required), password (required), email (required), birthday (not required) and favorite movies (not required)</li>
                 <ul>
                     <li>Example:<br>
                         <code>
@@ -231,11 +231,11 @@
                     <li>Example:<br>
                         <code>
                             {<br>
-                                "_id": "ObjectId('65bd89eb1532675fdd12af37')",<br>
+                                "_id": "65bd89eb1532675fdd12af37",<br>
                                 "Username": "AmyJones123",<br>
                                 "Password": "password!518",<br>
                                 "Email": "amy.jones@email.com",<br>
-                                "Birthday": "1984-09-27",<br>
+                                "Birthday": "1984-09-27T00:00:00.000Z",<br>
                                 "FavoriteMovies": ["Hereditary", "Silence of the Lambs"]<br>
                             }
                         </code>
@@ -243,13 +243,13 @@
                 </ul>
         </ul>
         <p><a href="#pageTop"><em>Return to top of page</em></a></p>
-        <h3 id="userUpdate">Allow users to update their username</h3>
+        <h3 id="userUpdate">Allow users to update their details</h3>
         <ul>
-            <li>Description: This endpoint allows users to update their user name.</li>
-            <li>URL: /users/:id</li>
+            <li>Description: This endpoint allows users to update their user details.</li>
+            <li>URL: /users/:Username</li>
             <li>Method: PUT</li>
-            <li>Query Parameters: :id</li>
-            <li>Request Body: JSON object with the new user name</li>
+            <li>Query Parameters: :Username</li>
+            <li>Request Body: JSON object with the user details to update</li>
                 <ul>
                     <li>Example:<br>
                         <code>
@@ -260,16 +260,17 @@
                         </code>
                     </li>
                 </ul>
-            <li>Response Body: JSON object containing user details, including the new user name.</li>
+            <li>Response Body: JSON object containing user details, including the new user details.</li>
                 <ul>
                     <li>Example:<br>
                         <code>
                             {<br>
-                                "_id": "ObjectId('65bd8a4e1532675fdd12af38')",<br>
+                                "_id": "65bd8a4e1532675fdd12af38",<br>
                                 "Username": "KimUpdatedName",<br>
                                 "Password": "Str0ngPa$sword",<br>
                                 "Email": "kim.smith@email.com",<br>
-                                "Birthday": "1992-11-01",<br>
+                                "Birthday": "1992-11-01T00:00:00.000Z",<br>
+                                "FavoriteMovies": []<br>
                             }
                         </code>
                     </li>
@@ -279,15 +280,15 @@
         <h3 id="movieFavorite">Allow users to add a movie to their list of favorites</h3>
         <ul>
             <li>Description: This endpoint allow users to add a single movie to their list of favorites.</li>
-            <li>URL: /users/:id/:movieTitle</li>
+            <li>URL: /users/:Username/movies/:MovieID</li>
             <li>Method: POST</li>
-            <li>Query Parameters: :id, :movieTitle</li>
+            <li>Query Parameters: :Username, :movieID</li>
             <li>Request Body: none</li>
             <li>Response Body: Text message confirming the movie has been added to favorites.</li>
                 <ul>
                     <li>Example:<br>
                         <code>
-                            "Us has been added to user [id]'s array."
+                            "Us has been added to [Username]'s Favorite Movies."
                         </code>
                     </li>
                 </ul>
@@ -296,15 +297,15 @@
         <h3 id="movieUnfavorite">Allow users to remove a movie from their list of favorites</h3>
         <ul>
             <li>Description: This endpoint allow users to remove a single movie from their list of favorites.</li>
-            <li>URL: /users/:id/:movieTitle</li>
+            <li>URL: /users/:Username/movies/:MovieID</li>
             <li>Method: DELETE</li>
-            <li>Query Parameters: :id, :movieTitle</li>
+            <li>Query Parameters: :Username, :movieID</li>
             <li>Request Body: none</li>
             <li>Response Body: Text message confirming the movie has been removed from favorites.</li>
                 <ul>
                     <li>Example:<br>
                         <code>
-                            "Alien has been removed from user [id]'s array."
+                            "Alien has been removed from [Username]'s Favorite Movies."
                         </code>
                     </li>
                 </ul>
@@ -313,15 +314,15 @@
         <h3 id="deleteUser">Allow users to deregister</h3>
         <ul>
             <li>Description: This endpoint users to be removed from the database.</li>
-            <li>URL: /users/:id</li>
+            <li>URL: /users/:Username</li>
             <li>Method: DELETE</li>
-            <li>Query Parameters: :id</li>
+            <li>Query Parameters: :Username</li>
             <li>Request Body: none</li>
             <li>Response Body: Text message confirming the user has been deleted.</li>
                 <ul>
                     <li>Example:<br>
                         <code>
-                            "User [id] has been deleted."
+                            "[Username] has been deleted."
                         </code>
                     </li>
                 </ul>
