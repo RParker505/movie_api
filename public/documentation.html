@@ -54,7 +54,7 @@
                     <td><a href="#newUser">Allow new users to register</a></td>
                     <td>POST</td>
                     <td>/users</td>
-                    <td>JSON object with user details: Username, Password, Email, Birthday, FavoriteMovies, id</td>
+                    <td>JSON object with user details: Username, Password, Email, Birthday, id</td>
                 </tr>
                 <tr>
                     <td><a href="#userUpdate">Allow users to update their details</a></td>
@@ -66,13 +66,13 @@
                     <td><a href="#movieFavorite">Allow users to add movie to their list of favorites</a></td>
                     <td>POST</td>
                     <td>/users/:Username/movies/:MovieID</td>
-                    <td>Text message confirming the movie has been added to favorites</td>
+                    <td>JSON object with user details: Username, Password, Email, Birthday, FavoriteMovies, id</td>
                 </tr>
                 <tr>
                     <td><a href="#movieUnfavorite">Allow users to remove movie to their list of favorites</a></td>
                     <td>DELETE</td>
                     <td>/users/:Username/movies/:MovieID</td>
-                    <td>Text message confirming the movie has been removed from favorites</td>
+                    <td>JSON object with user details: Username, Password, Email, Birthday, FavoriteMovies, id</td>
                 </tr>
                 <tr>
                     <td><a href="#deleteUser">Allow existing users to deregister</a></td>
@@ -221,7 +221,6 @@
                                 "Password": "password!518",<br>
                                 "Email": "amy.jones@email.com",<br>
                                 "Birthday": "1984-09-27",<br>
-                                "FavoriteMovies": ["Hereditary", "Silence of the Lambs"]<br>
                             }
                         </code>
                     </li>
@@ -236,7 +235,7 @@
                                 "Password": "password!518",<br>
                                 "Email": "amy.jones@email.com",<br>
                                 "Birthday": "1984-09-27T00:00:00.000Z",<br>
-                                "FavoriteMovies": ["Hereditary", "Silence of the Lambs"]<br>
+                                "FavoriteMovies": []<br>
                             }
                         </code>
                     </li>
@@ -255,7 +254,6 @@
                         <code>
                             {<br>
                                 "Username": "KimUpdatedName",<br>
-                                "FavoriteMovies": []<br>
                             }
                         </code>
                     </li>
@@ -284,11 +282,18 @@
             <li>Method: POST</li>
             <li>Query Parameters: :Username, :movieID</li>
             <li>Request Body: none</li>
-            <li>Response Body: Text message confirming the movie has been added to favorites.</li>
+            <li>Response Body: JSON object containing user details</li>
                 <ul>
                     <li>Example:<br>
                         <code>
-                            "Us has been added to [Username]'s Favorite Movies."
+                            {<br>
+                                "_id": "65bd89911532675fdd12af36",<br>
+                                "Username": "SarahJBrown11",<br>
+                                "Password": "sarahpass",<br>
+                                "Email": "sarah.brown@email.com",<br>
+                                "Birthday": "1993-12-05T00:00:00.000Z",<br>
+                                "FavoriteMovies": ["65bd82bb1532675fdd12af2e"]<br>
+                            }
                         </code>
                     </li>
                 </ul>
@@ -301,11 +306,18 @@
             <li>Method: DELETE</li>
             <li>Query Parameters: :Username, :movieID</li>
             <li>Request Body: none</li>
-            <li>Response Body: Text message confirming the movie has been removed from favorites.</li>
+            <li>Response Body: JSON object containing user details</li>
                 <ul>
                     <li>Example:<br>
                         <code>
-                            "Alien has been removed from [Username]'s Favorite Movies."
+                            {<br>
+                                "_id": "65bd89911532675fdd12af36",<br>
+                                "Username": "SarahJBrown11",<br>
+                                "Password": "sarahpass",<br>
+                                "Email": "sarah.brown@email.com",<br>
+                                "Birthday": "1993-12-05T00:00:00.000Z",<br>
+                                "FavoriteMovies": []<br>
+                            }
                         </code>
                     </li>
                 </ul>
