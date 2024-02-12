@@ -66,7 +66,12 @@ app.post('/users', async (req, res) => {
   Email: String,(required)
   Birthday: Date
 }*/
-app.put('/users/:Username', async (req, res) => {
+app.put('/users/:Username', passport.authenticate ('jwt', {session: false}), async (req, res) => {
+  //Condition to check that username in request matches username in request params
+  if(req.user.Username !== req.params.Username) {
+    return res.status(400).send('Permission denied.');
+  }
+  //Condition ends, finds user and updates their info
   await Users.findOneAndUpdate({Username: req.params.Username}, {$set:
     {
       Username: req.body.Username,
