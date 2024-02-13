@@ -13,7 +13,7 @@ let generateJWTToken = (user) => {
     });
 }
 
-/*POST login.*/
+//POST endpoint /login for user authentication. Uses Passport.js and generates a JSON Web Token (JWT) upon successful authentication.
 module.exports = (router) => {
     router.post('/login', (req, res) => {
         passport.authenticate('local', {session: false}, (error, user, info) => {//session:false ensures it won't save the user in the session
