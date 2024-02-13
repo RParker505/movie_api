@@ -20,12 +20,12 @@ passport.use(
             .then((user) => {
                 if (!user) {
                     console.log('incorrect username');
-                    return callback(null, false, {
+                    return callback(null, false, {//comes back false if user does not exist
                         message: 'Incorrect username or password.',
                     });
                 }
                 console.log('finished');
-                return callback(null, user);
+                return callback(null, user);//returns user if they exist
             })
             .catch((error) => {
                 if (error) {
