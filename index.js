@@ -1,6 +1,5 @@
-const express = require('express');
-    uuid = require('uuid');
-    mongoose = require('mongoose');
+const express = require('express'),
+    mongoose = require('mongoose'),
     Models = require('./models.js');
 
 const app = express(); //use this variable to route HTTP requests and responses
