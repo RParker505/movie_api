@@ -11,6 +11,9 @@ const Users = Models.User;
 
 mongoose.connect('mongodb://localhost:27017/svDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
+const cors = require('cors');
+app.use(cors());
+
 let auth = require('./auth.js')(app); //(app) ensures Express is available in the .auth.js file
 const passport = require('passport');
 require('./passport.js');
