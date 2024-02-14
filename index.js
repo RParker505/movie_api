@@ -35,6 +35,7 @@ app.use(express.static('public'));
   Birthday: Date
 }*/
 app.post('/users', async (req, res) => {
+  let hashedPassword = Users.hashPassword(req.body.Password);
   await Users.findOne({Username: req.body.Username})//Query Users model to check if username from client already exists. If so, alert them.
   .then((user) => {
     if (user) {
@@ -43,7 +44,7 @@ app.post('/users', async (req, res) => {
       Users
         .create({//if user does not exist, use Mongoose .create command to set up new user matching schema from models.js file
           Username: req.body.Username,
-          Password: req.body.Password,
+          Password: hashedPassword,
           Email: req.body.Email,
           Birthday: req.body.Birthday
         })
