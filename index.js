@@ -35,7 +35,13 @@ app.use(express.static('public'));
   Email: String,
   Birthday: Date
 }*/
-app.post('/users', async (req, res) => {
+app.post('/users', [
+  //input validation here
+  check('Username', 'Username is required').notEmpty(),
+  check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+  check('Password', 'Password is required').notEmpty(),
+  check('Email', 'Email does not appear to be valid').isEmail()
+], async (req, res) => {
   let hashedPassword = Users.hashPassword(req.body.Password);
   await Users.findOne({Username: req.body.Username})//Query Users model to check if username from client already exists. If so, alert them.
   .then((user) => {
