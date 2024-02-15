@@ -42,6 +42,13 @@ app.post('/users', [
   check('Password', 'Password is required').notEmpty(),
   check('Email', 'Email does not appear to be valid').isEmail()
 ], async (req, res) => {
+  
+  //check validation object for errors
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({errors: errors.array()});
+  }
+
   let hashedPassword = Users.hashPassword(req.body.Password);
   await Users.findOne({Username: req.body.Username})//Query Users model to check if username from client already exists. If so, alert them.
   .then((user) => {
