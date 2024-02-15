@@ -83,7 +83,20 @@ app.post('/users', [
   Email: String,(required)
   Birthday: Date
 }*/
-app.put('/users/:Username', passport.authenticate ('jwt', {session: false}), async (req, res) => {
+app.put('/users/:Username', [
+  //input validation here
+  check('Username', 'Username is required').notEmpty(),
+  check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+  check('Password', 'Password is required').notEmpty(),
+  check('Email', 'Email does not appear to be valid').isEmail()
+], passport.authenticate ('jwt', {session: false}), async (req, res) => {
+
+  //check validation object for errors
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({errors: errors.array()});
+  }
+
   //Condition to check that username in request matches username in request params
   if(req.user.Username !== req.params.Username) {
     return res.status(400).send('Permission denied.');
