@@ -1,6 +1,7 @@
 const express = require('express'),
     mongoose = require('mongoose'),
-    Models = require('./models.js');
+    Models = require('./models.js'),
+    {check, validationResult} = require('express-validator');
 
 const app = express(); //use this variable to route HTTP requests and responses
 app.use(express.json());
