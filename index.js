@@ -10,7 +10,11 @@ app.use(express.urlencoded({extended: true}));
 const Movies = Models.Movie;
 const Users = Models.User;
 
-mongoose.connect('mongodb://localhost:27017/svDB', { useNewUrlParser: true, useUnifiedTopology: true });
+//connects to local database. swap with .connect function below if needed.
+// mongoose.connect('mongodb://localhost:27017/svDB', { useNewUrlParser: true, useUnifiedTopology: true });
+
+//connects to MongoDB Atlas database
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const cors = require('cors');
 app.use(cors());
