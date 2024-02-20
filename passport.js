@@ -46,7 +46,7 @@ passport.use(
 //Authenticate users based on JWT submitted with their request.
 passport.use(new JWTStrategy ({
     jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),//JWT is extracted from HTTP request header
-    secretOrKey: 'your_jwt_secret'//use secret key to verify signature of the JWT (ensure client is who it says it is and JWT hasn't been altered)
+    secretOrKey: process.env.secretKey//use secret key to verify signature of the JWT (ensure client is who it says it is and JWT hasn't been altered)
 }, async (jwtPayload, callback) => {//take the object literal of the decoded JWT payload as a parameter
     return await Users.findById(jwtPayload._id)
         .then((user) => {
