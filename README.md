@@ -11,7 +11,7 @@ _See documentation.html in the public folder of the repository._
 ## What's Needed
 
 - Node.js: JavaScript runtime for server-side scripting.
-- Express: Back end web application framework for building RESTful APIs with Node.js.
+- Express: Back-end web application framework for building RESTful APIs with Node.js.
 - MongoDB with Mongoose: NoSQL database and Object Data Modeling library for Node.js.
 - Postman: Allows you to design, develop, test and monitor APIs.
 - express-validator: Middleware for input validation in Express.
