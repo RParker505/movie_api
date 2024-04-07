@@ -2,7 +2,7 @@
 
 ## Description
 
-The SpookyVibes REST API is the server-side component of the SpookyVibes web application (frontend is here: https://github.com/RParker505/spookyVibes-client). The API provides users with access to information about different horror movies, including the plot, director, genre, and image. Users are able to sign up, update their personal information, and create a list of their favorite scary movies.
+The SpookyVibes REST API is the server-side component of the SpookyVibes web application (frontend is here: https://github.com/RParker505/spookyVibes-client). The API provides users with access to information about different horror movies, including the plot, director, genre, and an image. Users are able to sign up, update their personal information, and create a list of their favorite scary movies.
 
 ## Documentation
 
