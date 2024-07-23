@@ -155,18 +155,32 @@ app.delete('/users/:Username/movies/:MovieID', passport.authenticate ('jwt', {se
 })
 
 // DELETE to let user deregister
+// app.delete('/users/:Username', passport.authenticate ('jwt', {session: false}), async (req, res) => {
+//   await Users.findOneAndDelete({Username: req.params.Username})
+//     .then((user) => {
+//       if (!user) {
+//         res.status(400).send(req.params.Username + ' was not found');
+//       } else {
+//         res.status(200).send(req.params.Username + ' was deleted.');
+//       }
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.status(500).send('Error: ' + err);
+//     });
+// });
 app.delete('/users/:Username', passport.authenticate ('jwt', {session: false}), async (req, res) => {
   await Users.findOneAndDelete({Username: req.params.Username})
     .then((user) => {
       if (!user) {
-        res.status(400).send(req.params.Username + ' was not found');
+        res.status(400).json({ message: req.params.Username + ' was not found' });
       } else {
-        res.status(200).send(req.params.Username + ' was deleted.');
+        res.status(200).json({ message: req.params.Username + ' was deleted.' });
       }
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send('Error: ' + err);
+      res.status(500).json({ error: 'Error: ' + err });
     });
 });
 
